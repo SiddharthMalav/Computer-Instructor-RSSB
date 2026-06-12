@@ -110,7 +110,8 @@
     resultAccuracy: document.getElementById('result-accuracy'),
     
     // Theme
-    themeToggle: document.getElementById('theme-toggle')
+    themeToggle: document.getElementById('theme-toggle'),
+    sidebarOverlay: document.getElementById('sidebar-overlay')
   };
 
   // List of all syllabus topics for checking completion
@@ -273,6 +274,13 @@
   }
 
   function setupEventListeners() {
+    const closeSidebar = () => {
+      DOM.sidebar.classList.remove('mobile-open');
+      if (DOM.sidebarOverlay) {
+        DOM.sidebarOverlay.classList.remove('active');
+      }
+    };
+
     // Navigation items click handling
     DOM.navItems.forEach(item => {
       item.addEventListener('click', (e) => {
@@ -280,7 +288,7 @@
         navigateToTab(tab);
         
         // Hide mobile drawer if open
-        DOM.sidebar.classList.remove('mobile-open');
+        closeSidebar();
       });
     });
 
@@ -301,15 +309,23 @@
 
     // Mobile Hamburger Menu Toggle
     DOM.menuToggle.addEventListener('click', () => {
-      DOM.sidebar.classList.toggle('mobile-open');
+      const isOpen = DOM.sidebar.classList.toggle('mobile-open');
+      if (DOM.sidebarOverlay) {
+        DOM.sidebarOverlay.classList.toggle('active', isOpen);
+      }
     });
 
     // Close mobile drawer when clicking content area
     document.querySelector('.main-content').addEventListener('click', (e) => {
       if (DOM.sidebar.classList.contains('mobile-open') && !DOM.menuToggle.contains(e.target)) {
-        DOM.sidebar.classList.remove('mobile-open');
+        closeSidebar();
       }
     });
+
+    // Close mobile drawer when clicking overlay backdrop
+    if (DOM.sidebarOverlay) {
+      DOM.sidebarOverlay.addEventListener('click', closeSidebar);
+    }
 
     // Window Popstate for back-button support
     window.addEventListener('hashchange', handleRouting);

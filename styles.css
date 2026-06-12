@@ -285,15 +285,24 @@ body {
   font-family: var(--font-display);
   font-weight: 500;
   font-size: 0.95rem;
+  min-width: 0;
+}
+
+.breadcrumb span {
+  white-space: nowrap;
 }
 
 .breadcrumb .separator {
   color: var(--text-secondary);
+  flex-shrink: 0;
 }
 
 .breadcrumb .active {
   color: var(--accent);
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .header-right {
@@ -793,9 +802,18 @@ body.dark-theme .stat-icon.ga {
    ========================================== */
 .section-tabs {
   display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 24px;
   gap: 12px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.section-tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .section-tab-btn {
@@ -812,6 +830,12 @@ body.dark-theme .stat-icon.ga {
   gap: 8px;
   border-bottom: 2px solid transparent;
   transition: all var(--transition-fast);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.section-tab-btn svg {
+  flex-shrink: 0;
 }
 
 .section-tab-btn:hover {
@@ -1525,4 +1549,176 @@ body.dark-theme .example-box .example-badge {
   border-radius: 4px;
   animation: slideDown 0.3s ease;
 }
+
+/* ==========================================
+   MOBILE BACKDROP OVERLAY & RESPONSIVENESS OVERRIDES
+   ========================================== */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 95;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 1024px) {
+  /* Prevent breadcrumb overflow: show only the active topic name on tablet/mobile */
+  .breadcrumb #breadcrumb-subject,
+  .breadcrumb .separator {
+    display: none !important;
+  }
+
+  #breadcrumb-topic {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    padding: 0 16px;
+  }
+  
+  .content-body {
+    padding: 16px;
+  }
+  
+  .panel {
+    padding: 16px;
+  }
+
+  .dashboard-layout-grid {
+    gap: 16px;
+  }
+
+  #breadcrumb-topic {
+    max-width: 150px;
+  }
+
+  /* Compact stats cards on mobile */
+  .stat-card {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .stat-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+
+  /* Make Notes tables scrollable horizontally */
+  .notes-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--border-color);
+  }
+  
+  .notes-table th, .notes-table td {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Wrap Active Mock header on small screens */
+  .mock-exam-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .exam-meta-card {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .visual-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .results-footer-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .results-footer-actions .btn {
+    width: 100%;
+  }
+
+  .notes-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .notes-actions {
+    width: 100%;
+  }
+  
+  .notes-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  #breadcrumb-topic {
+    max-width: 110px;
+  }
+
+  .session-timer {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+
+  .session-timer svg {
+    display: none;
+  }
+
+  .accordion-header {
+    font-size: 0.88rem;
+    padding: 12px 14px;
+  }
+
+  /* Stack syllabus tracker lists vertically to prevent layout blowouts */
+  .syllabus-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+  
+  .syllabus-list li .btn-goto {
+    align-self: flex-end;
+    width: auto;
+    padding: 6px 12px;
+    background-color: var(--accent-light);
+  }
+
+  .welcome-banner {
+    padding: 20px;
+  }
+
+  .banner-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .banner-text p {
+    font-size: 0.9rem;
+  }
+}
+
 
