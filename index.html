@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSSB 2026 Basic Computer Instructor Prep Hub</title>
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+  <!-- Layout Wrapper -->
+  <div class="app-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+        </div>
+        <div class="brand-info">
+          <h2>RSSB 2026</h2>
+          <span>Instructor Prep Hub</span>
+        </div>
+      </div>
+
+      <!-- Paper Selector Tabs inside Sidebar -->
+      <div class="paper-selector-container">
+        <button class="paper-select-btn active" id="btn-show-paper1" onclick="window.app.togglePaperNav(1)">Paper I</button>
+        <button class="paper-select-btn" id="btn-show-paper2" onclick="window.app.togglePaperNav(2)">Paper II</button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- Main Dashboard Link -->
+        <a href="#dashboard" class="nav-item active" data-tab="dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="14" rx="1"/></svg>
+          <span>Dashboard Overview</span>
+        </a>
+
+        <!-- PAPER I NAVIGATION GROUP -->
+        <div id="paper1-nav-group">
+          <div class="nav-section">Rajasthan GK</div>
+          <a href="#geography" class="nav-item" data-tab="geography" data-subject="rajasthan_gk">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Geography (भूगोल)</span>
+          </a>
+          <a href="#history-culture" class="nav-item" data-tab="history_culture" data-subject="rajasthan_gk">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+            <span>History & Culture (इतिहास)</span>
+          </a>
+          <a href="#current-affairs" class="nav-item" data-tab="current_affairs" data-subject="rajasthan_gk">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4c0-.5.2-1 .6-1.4C5 2.2 5.5 2 6 2h12c.5 0 1 .2 1.4.6.4.4.6.9.6 1.4v18l-8-4-8 4z"/></svg>
+            <span>Current Affairs (सामयिकी)</span>
+          </a>
+
+          <div class="nav-section">General Science</div>
+          <a href="#general-science" class="nav-item" data-tab="general_science" data-subject="general_science">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 5.5h20c0-2-1-4.25-2.5-5.5M12 2v12M8 5h8"/></svg>
+            <span>Science (सामान्य विज्ञान)</span>
+          </a>
+
+          <div class="nav-section">General Ability</div>
+          <a href="#reasoning" class="nav-item" data-tab="reasoning" data-subject="general_ability">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z"/></svg>
+            <span>Logical Reasoning</span>
+          </a>
+          <a href="#numeracy" class="nav-item" data-tab="numeracy" data-subject="general_ability">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><line x1="12" y1="5" x2="12" y2="19"/></svg>
+            <span>Basic Numeracy (Class X)</span>
+          </a>
+          <a href="#data-interpretation" class="nav-item" data-tab="data_interpretation" data-subject="general_ability">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            <span>Data Interpretation (DI)</span>
+          </a>
+        </div>
+
+        <!-- PAPER II NAVIGATION GROUP (Hidden by Default) -->
+        <div id="paper2-nav-group" style="display: none;">
+          <div class="nav-section">Core Computer Science</div>
+          <a href="#p2-fundamentals" class="nav-item" data-tab="p2_fundamentals" data-subject="computer_science">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="12" x="2" y="3" rx="2"/><path d="M12 15v5M5 20h14"/></svg>
+            <span>Fundamentals & MS Office</span>
+          </a>
+          <a href="#p2-programming-dsa" class="nav-item" data-tab="p2_programming_dsa" data-subject="computer_science">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <span>Programming & DSA (C/C++)</span>
+          </a>
+          <a href="#p2-core-cs" class="nav-item" data-tab="p2_core_cs" data-subject="computer_science">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/></svg>
+            <span>Computer Org & OS</span>
+          </a>
+          <a href="#p2-networking-security" class="nav-item" data-tab="p2_networking_security" data-subject="computer_science">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Networking & Security</span>
+          </a>
+          <a href="#p2-dbms-sad-iot" class="nav-item" data-tab="p2_dbms_sad_iot" data-subject="computer_science">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 11v6c0 1.66 4 3 9 3s9-1.34 9-3v-6"/></svg>
+            <span>DBMS, SAD & Web/IoT</span>
+          </a>
+
+          <div class="nav-section">Pedagogy & Ability</div>
+          <a href="#p2-pedagogy-mental" class="nav-item" data-tab="p2_pedagogy_mental" data-subject="pedagogy">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <span>Pedagogy & Mental Ability</span>
+          </a>
+        </div>
+
+        <div class="nav-section">Practice Hub</div>
+        <a href="#quiz-engine" class="nav-item" data-tab="quiz_engine">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>Interactive Mock Exam</span>
+        </a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button id="theme-toggle" class="btn-theme-toggle">
+          <span class="theme-dark-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg> Light Mode
+          </span>
+          <span class="theme-light-icon" style="display:none;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"/></svg> Dark Mode
+          </span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Top Header -->
+      <header class="main-header">
+        <div class="header-left">
+          <button id="menu-toggle" class="menu-toggle-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+          </button>
+          <div class="breadcrumb">
+            <span id="breadcrumb-subject">RSSB 2026</span>
+            <span class="separator">/</span>
+            <span id="breadcrumb-topic" class="active">Dashboard</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="session-timer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span id="study-timer">00:00:00</span>
+          </div>
+          <div class="overall-progress-bar-container">
+            <span>Total Syllabus Done:</span>
+            <div class="progress-track">
+              <div class="progress-fill" id="overall-progress-fill" style="width: 0%;"></div>
+            </div>
+            <span id="overall-progress-percent">0%</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dynamic View Container -->
+      <div class="content-body" id="content-body">
+        
+        <!-- DASHBOARD VIEW -->
+        <section id="dashboard-view" class="view-section active-view">
+          <div class="welcome-banner">
+            <div class="banner-text">
+              <h1>Basic Computer Instructor Prep Desk 🎯</h1>
+              <p>Complete Syllabus Hub: general ability, Rajasthan GK, pedagogy & all technical CS modules in Hinglish.</p>
+            </div>
+            <div class="banner-action">
+              <button class="btn btn-primary" onclick="window.app.startQuickMock()">Start Mock Exam</button>
+            </div>
+          </div>
+
+          <!-- Quick Stats Grid (Paper-I & Paper-II Overview) -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon rgk">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V15a2.5 2.5 0 0 1 2.5-2.5H20v8H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg>
+              </div>
+              <div class="stat-details">
+                <h3>Paper-I Progress</h3>
+                <p><span id="p1-completed-count">0</span> / 7 Chapters Done</p>
+                <div class="progress-track"><div class="progress-fill" id="p1-progress-fill" style="width: 0%;"></div></div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon ga">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17h6M9 13h6M9 9h6"/></svg>
+              </div>
+              <div class="stat-details">
+                <h3>Paper-II Progress</h3>
+                <p><span id="p2-completed-count">0</span> / 6 Chapters Done</p>
+                <div class="progress-track"><div class="progress-fill" id="p2-progress-fill" style="width: 0%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Syllabus Checklist & Interactive Planner -->
+          <div class="dashboard-layout-grid">
+            <div class="panel syllabus-tracker">
+              <h2>Syllabus Checklist & Progress</h2>
+              <p class="panel-subtitle">Mark sections as completed once you study the detailed notes and practice MCQs.</p>
+              
+              <div class="syllabus-accordion">
+                <!-- Paper I Checklist -->
+                <div class="accordion-item">
+                  <div class="accordion-header">
+                    <span>Paper-I: General & Rajasthan GK</span>
+                    <span class="badge" id="badge-p1">0%</span>
+                  </div>
+                  <div class="accordion-content">
+                    <ul class="syllabus-list">
+                      <li>
+                        <label class="checkbox-container">
+                          <input type="checkbox" id="chk-geography" onchange="window.app.toggleTopicCompletion('geography')">
+                          <span class="checkmark"></span>
+                          Geography (भूगोल) - Divisions, Rivers, Minerals, Census
+                        </label>
+                        <button class="btn-goto" onclick="window.app.navigateToTab('geography')">Study Notes</button>
+                      </li>
+                      <li>
+                        <label class="checkbox-container">
+                          <input type="checkbox" id="chk-history_culture" onchange="window.app.toggleTopicCompletion('history_culture')">
+                          <span class="checkmark"></span>
+                          History & Culture (इतिहास, कला, संस्कृति, एकीकरण)
+                        </label>
+                        <button class="btn-goto" onclick="window.app.navigateToTab('history_culture')">Study Notes</button>
+                      </li>
+                      <li>
+                        <label class="checkbox-container">
+                          <input type="checkbox" id="chk-current_affairs" onchange="window.app.toggleTopicCompletion('current_affairs')">
+                          <span class="checkmark"></span>
+                          Current Affairs of Rajasthan 2025/2026
+                        </label>
+                        <button class="btn-goto" onclick="window.app.navigateToTab('current_affairs')">Study Notes</button>
+                      </li>
+                      <li>
+                        <label class="checkbox-container">
+                          <input type="checkbox" id="chk-general_science" onchange="window.app.toggleTopicCompletion('general_science')">
+                          <span class="checkmark"></span>
+                          General Science (Physics, Chemistry, Biology - Class X)
+                        </label>
+                        <button class="btn-goto" onclick="window.app.navigateToTab('general_science')">Study Notes</button>
+                      </li>
+                      <li>
+                        <label class="checkbox-container">
+                          <input type="checkbox" id="chk-reasoning" onchange="window.app.toggleTopicCompletion('reasoning')">
+                          <span class="checkmark"></span>
+                          Logical Reasoning & Mental Ability
+                        </label>
+                        <button class="btn-goto" onclick="window.app.navigateToTab('reasoning')">Study Notes</button>
+                      </li>
+                      <li>
+                        <label class="checkbox-container">
+                          <input type="checkbox" id="chk-numeracy" onchange="window.app.toggleTopicCompletion('numeracy')">
+                          <span class="checkmark"></span>
+                          Basic Numeracy (संख्याएँ, Percent, SI & CI)
+                        </label>
+                        <button class="btn-goto" onclick="window.app.navigateToTab('numeracy')">Study Notes</button>
+                      </li>
+                      <li>
+                        <label class="checkbox-container">
+                          <input type="checkbox" id="chk-data_interpretation" onchange="window.app.toggleTopicCompletion('data_interpretation')">
+                          <span class="checkmark"></span>
+                          Data Interpretation (Charts, graphs & sufficiency)
+                        </label>
+                        <button class="btn-goto" onclick="window.app.navigateToTab('data_interpretation')">Study Notes</button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Paper II Checklist -->
+                <div class="accordion-item">
+                  <div class="accordion-header">
+                    <span>Paper-II: Technical Computer Science & Pedagogy</span>
+                    <span class="badge" id="badge-p2">0%</span>
+                  </div>
+                  <div class="accordion-content">
+                    <ul class="syllabus-list">
+                      <li>
+                        <label class="checkbox-container">
+                          <input type="checkbox" id="chk-p2_fundamentals" onchange="window.app.toggleTopicCompletion('p2_fundamentals')">
+                          <span class="checkmark"></span>
+                          Fundamentals of Computer, Number Systems, MS Office
+                        </label>
+                        <button class="btn-goto" onclick="window.app.navigateToTab('p2_fundamentals')">Study Notes</button>
+                      </li>
+                      <li>
+                        <label class="checkbox-container">
+                          <input type="checkbox" id="chk-p2_programming_dsa" onchange="window.app.toggleTopicCompletion('p2_programming_dsa')">
+                          <span class="checkmark"></span>
+                          Programming in C/C++, OOPs & Data Structures (DSA)
+                        </label>
+                        <button class="btn-goto" onclick="window.app.navigateToTab('p2_programming_dsa')">Study Notes</button>
+                      </li>
+                      <li>
+                        <label class="checkbox-container">
+                          <input type="checkbox" id="chk-p2_core_cs" onchange="window.app.toggleTopicCompletion('p2_core_cs')">
+                          <span class="checkmark"></span>
+                          Computer Organization & Operating System (OS)
+                        </label>
+                        <button class="btn-goto" onclick="window.app.navigateToTab('p2_core_cs')">Study Notes</button>
+                      </li>
+                      <li>
+                        <label class="checkbox-container">
+                          <input type="checkbox" id="chk-p2_networking_security" onchange="window.app.toggleTopicCompletion('p2_networking_security')">
+                          <span class="checkmark"></span>
+                          Communication, Networking Layers & Security
+                        </label>
+                        <button class="btn-goto" onclick="window.app.navigateToTab('p2_networking_security')">Study Notes</button>
+                      </li>
+                      <li>
+                        <label class="checkbox-container">
+                          <input type="checkbox" id="chk-p2_dbms_sad_iot" onchange="window.app.toggleTopicCompletion('p2_dbms_sad_iot')">
+                          <span class="checkmark"></span>
+                          DBMS (SQL/NoSQL), SAD (SDLC/UML) & Internet/IoT
+                        </label>
+                        <button class="btn-goto" onclick="window.app.navigateToTab('p2_dbms_sad_iot')">Study Notes</button>
+                      </li>
+                      <li>
+                        <label class="checkbox-container">
+                          <input type="checkbox" id="chk-p2_pedagogy_mental" onchange="window.app.toggleTopicCompletion('p2_pedagogy_mental')">
+                          <span class="checkmark"></span>
+                          Pedagogy, IT Developments & General Mental Ability
+                        </label>
+                        <button class="btn-goto" onclick="window.app.navigateToTab('p2_pedagogy_mental')">Study Notes</button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quiz statistics / Target Score Tracker -->
+            <div class="panel statistics-panel">
+              <h2>Exam Strategy & Guidelines</h2>
+              <div class="strategy-widget">
+                <div class="exam-stat">
+                  <span class="label">Qualifying Cutoff:</span>
+                  <span class="value font-accent">40% in each Paper</span>
+                </div>
+                <div class="exam-stat">
+                  <span class="label">Completed Chapters:</span>
+                  <span class="value" id="stats-topics-completed">0 / 13</span>
+                </div>
+                <div class="exam-stat">
+                  <span class="label">Mock Tests Practiced:</span>
+                  <span class="value" id="stats-mocks-taken">0</span>
+                </div>
+                <div class="exam-stat">
+                  <span class="label">Average Accuracy:</span>
+                  <span class="value" id="stats-accuracy">-</span>
+                </div>
+              </div>
+
+              <div class="alert-box note">
+                <strong>⚠️ Negative Marking Rule:</strong>
+                <p>Har wrong answer ke liye **1/3rd (0.33)** marks deduct kiye jayenge. Negative scoring se bachne ke liye accurate options choose karein.</p>
+              </div>
+
+              <!-- Quick Revision Flashcards -->
+              <div class="quick-revision-card">
+                <h3>Custom practice tests</h3>
+                <p>Generate a customized mock test dynamically from any selected chapters.</p>
+                <button class="btn btn-secondary btn-full" onclick="window.app.navigateToTab('quiz_engine')">Open Mock Exam Panel</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SUBJECT NOTE VIEWER VIEW (Dynamic) -->
+        <section id="subject-notes-view" class="view-section">
+          <!-- Common Notes Header -->
+          <div class="notes-header">
+            <div>
+              <h1 id="notes-title">Subject Title</h1>
+              <p id="notes-desc" class="desc">Loading notes summary...</p>
+            </div>
+            <div class="notes-actions">
+              <button class="btn btn-secondary btn-sm" onclick="window.app.toggleCurrentTopicCheck()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Mark as Read
+              </button>
+            </div>
+          </div>
+
+          <!-- Top Sub-navigation for switching between difficulty levels and practice questions -->
+          <div class="section-tabs">
+            <button class="section-tab-btn active" id="tab-btn-level1" onclick="window.app.switchSubjectSubTab('level1')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
+              Level 1: Foundation (बुनियाद)
+            </button>
+            <button class="section-tab-btn" id="tab-btn-level2" onclick="window.app.switchSubjectSubTab('level2')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Level 2: Exam Ready (विशेषज्ञ)
+            </button>
+            <button class="section-tab-btn" id="tab-btn-level3" onclick="window.app.switchSubjectSubTab('level3')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              Level 3: Advanced (PYQ/रिवीजन)
+            </button>
+            <button class="section-tab-btn" id="tab-btn-practice" onclick="window.app.switchSubjectSubTab('practice')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Practice Set (अभ्यास प्रश्न)
+            </button>
+          </div>
+
+          <!-- Level 1 Pane -->
+          <div id="level1-pane" class="tab-pane active-pane">
+            <article class="notes-body markdown-rendered" id="level1-content">
+              Loading foundation content...
+            </article>
+          </div>
+
+          <!-- Level 2 Pane -->
+          <div id="level2-pane" class="tab-pane">
+            <article class="notes-body markdown-rendered" id="level2-content">
+              Loading exam formulas & solved problems...
+            </article>
+          </div>
+
+          <!-- Level 3 Pane -->
+          <div id="level3-pane" class="tab-pane">
+            <article class="notes-body markdown-rendered" id="level3-content">
+              Loading advanced comparisons & revision facts...
+            </article>
+          </div>
+
+          <!-- Practice Quiz Panel -->
+          <div id="practice-pane" class="tab-pane">
+            <div class="quiz-info-bar">
+              <h2 id="practice-title">Practice Set</h2>
+              <div class="score-display">Score: <span id="quiz-score">0</span> / <span id="quiz-total-q">0</span></div>
+            </div>
+            
+            <div id="quiz-questions-container">
+              <!-- Dynamically populated questions -->
+            </div>
+
+            <div class="quiz-actions-bar">
+              <button class="btn btn-primary" id="btn-submit-quiz" onclick="window.app.gradeQuiz()">Submit Answers</button>
+              <button class="btn btn-secondary" id="btn-reset-quiz" onclick="window.app.resetQuiz()">Retry Quiz</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- INTERACTIVE MOCK EXAM ENGINE -->
+        <section id="quiz-engine-view" class="view-section">
+          <div class="mock-engine-config">
+            <h2>Interactive Mock Test Generator ⚙️</h2>
+            <p class="panel-subtitle">Create a customized, simulated exam paper based on RSSB specifications.</p>
+            
+            <div class="config-grid">
+              <div class="config-group">
+                <label>Select Chapters to Include in Mock Exam:</label>
+                
+                <div class="mock-paper-selections-wrapper">
+                  <div class="mock-paper-header-select">Paper-I (General/GK)</div>
+                  <div class="subject-select-boxes">
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="mock-subject-geography" checked>
+                      <span class="checkmark"></span>
+                      Geography
+                    </label>
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="mock-subject-history_culture" checked>
+                      <span class="checkmark"></span>
+                      History & Culture
+                    </label>
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="mock-subject-current_affairs" checked>
+                      <span class="checkmark"></span>
+                      Current Affairs
+                    </label>
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="mock-subject-general_science" checked>
+                      <span class="checkmark"></span>
+                      General Science
+                    </label>
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="mock-subject-reasoning" checked>
+                      <span class="checkmark"></span>
+                      Logical Reasoning
+                    </label>
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="mock-subject-numeracy" checked>
+                      <span class="checkmark"></span>
+                      Basic Numeracy
+                    </label>
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="mock-subject-data_interpretation" checked>
+                      <span class="checkmark"></span>
+                      Data Interpretation
+                    </label>
+                  </div>
+
+                  <div class="mock-paper-header-select mt-4">Paper-II (Computer Science)</div>
+                  <div class="subject-select-boxes">
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="mock-subject-p2_fundamentals" checked>
+                      <span class="checkmark"></span>
+                      Fundamentals & MS Office
+                    </label>
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="mock-subject-p2_programming_dsa" checked>
+                      <span class="checkmark"></span>
+                      Programming & DSA
+                    </label>
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="mock-subject-p2_core_cs" checked>
+                      <span class="checkmark"></span>
+                      Computer Organization & OS
+                    </label>
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="mock-subject-p2_networking_security" checked>
+                      <span class="checkmark"></span>
+                      Networking & Security
+                    </label>
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="mock-subject-p2_dbms_sad_iot" checked>
+                      <span class="checkmark"></span>
+                      DBMS, SAD & Web/IoT
+                    </label>
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="mock-subject-p2_pedagogy_mental" checked>
+                      <span class="checkmark"></span>
+                      Pedagogy & Mental Ability
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="config-group">
+                <label for="mock-question-count">Number of Questions:</label>
+                <select id="mock-question-count" class="form-control">
+                  <option value="5">5 Questions (Quick Quiz)</option>
+                  <option value="10" selected>10 Questions (Standard Quiz)</option>
+                  <option value="20">20 Questions (Mini Mock)</option>
+                  <option value="40">40 Questions (Major Mock)</option>
+                </select>
+
+                <div class="alert-box info mt-4">
+                  <strong>ℹ️ Exam Simulator Rules:</strong>
+                  <p>Questions are dynamically aggregated from the respective data modules. You will get 90 seconds per question with 1/3rd penalty for wrong attempts.</p>
+                </div>
+
+                <button class="btn btn-primary btn-full mt-4" onclick="window.app.generateMockTest()">Generate Exam Paper</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Mock Exam Sheet -->
+          <div id="active-mock-exam" class="active-mock-exam-pane" style="display: none;">
+            <div class="mock-exam-header">
+              <div class="exam-title-card">
+                <span class="badge badge-accent">EXAM IN PROGRESS</span>
+                <h2 id="active-exam-title">Mock Test Paper</h2>
+              </div>
+              <div class="exam-meta-card">
+                <div class="timer">
+                  Time Remaining: <span id="mock-timer-display">15:00</span>
+                </div>
+                <div class="questions-answered">
+                  Answered: <span id="mock-answered-count">0</span> / <span id="mock-total-count">10</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Questions viewport -->
+            <div id="mock-questions-container" class="mock-questions-list">
+              <!-- Dynamically built -->
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="mock-actions-bar">
+              <button class="btn btn-danger" onclick="window.app.confirmEndMock()">End Test & Grade</button>
+            </div>
+          </div>
+
+          <!-- Mock Exam Results Screen -->
+          <div id="mock-exam-results" class="mock-results-pane" style="display: none;">
+            <div class="results-header-banner">
+              <h2>Mock Test Results 📊</h2>
+              <p>Your performance report card. Negative marks are integrated (1/3rd penalty for wrong answers).</p>
+            </div>
+
+            <div class="results-grid">
+              <div class="result-score-card">
+                <span class="metric-label">Final Score</span>
+                <span class="metric-val" id="result-score-display">0.00</span>
+                <span class="metric-sub" id="result-out-of">out of 10.00</span>
+              </div>
+              <div class="result-breakdown-details">
+                <div class="breakdown-row">
+                  <span>Total Questions:</span>
+                  <strong id="result-total-q">-</strong>
+                </div>
+                <div class="breakdown-row">
+                  <span>Correct Answers (+1.00 each):</span>
+                  <strong class="text-success" id="result-correct-q">-</strong>
+                </div>
+                <div class="breakdown-row">
+                  <span>Incorrect Answers (-0.33 each):</span>
+                  <strong class="text-danger" id="result-incorrect-q">-</strong>
+                </div>
+                <div class="breakdown-row">
+                  <span>Unattempted Questions:</span>
+                  <strong id="result-unattempted-q">-</strong>
+                </div>
+                <div class="breakdown-row">
+                  <span>Accuracy Rate:</span>
+                  <strong id="result-accuracy">-</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="results-solutions-section">
+              <h3>Answer Key & Detailed Hinglish Solutions</h3>
+              <div id="mock-results-solutions-container" class="solutions-list">
+                <!-- Solutions populated dynamically -->
+              </div>
+            </div>
+
+            <div class="results-footer-actions">
+              <button class="btn btn-primary" onclick="window.app.resetToConfig()">Start Another Mock Test</button>
+              <button class="btn btn-secondary" onclick="window.app.navigateToTab('dashboard')">Back to Dashboard</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Load Paper 1 Data Modules -->
+  <script src="data/geography.js"></script>
+  <script src="data/history_culture.js"></script>
+  <script src="data/current_affairs.js"></script>
+  <script src="data/general_science.js"></script>
+  <script src="data/reasoning.js"></script>
+  <script src="data/numeracy.js"></script>
+  <script src="data/data_interpretation.js"></script>
+
+  <!-- Load Paper 2 Data Modules -->
+  <script src="data/paper2_fundamentals.js"></script>
+  <script src="data/paper2_programming_dsa.js"></script>
+  <script src="data/paper2_core_cs.js"></script>
+  <script src="data/paper2_networking_security.js"></script>
+  <script src="data/paper2_dbms_sad_iot.js"></script>
+  <script src="data/paper2_pedagogy_mental.js"></script>
+  
+  <!-- Load Main Controller -->
+  <script src="app.js"></script>
+</body>
+</html>
